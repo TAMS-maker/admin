@@ -46,16 +46,16 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
                   <th class="th-sm">id
 
                   </th>
-                  <th class="th-sm">Fname
+                  <th class="th-sm">NAME
 
                   </th>
-                  <th class="th-sm">Lname
+                  <th class="th-sm">Event Type
 
                   </th>
                   <th class="th-sm">Pnumber
 
                   </th>
-                  <th class="th-sm">Email
+                  <th class="th-sm">Date Request
 
                   </th>
                   <th class="th-sm">Action
@@ -66,15 +66,15 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
               <tbody>
               <?php
             $count=1;
-            $sel_query="Select * from userinfo ORDER BY id desc;";
+            $sel_query="Select * from eevent ORDER BY id desc;";
             $result = mysqli_query($con,$sel_query);
             while($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
                   <td><?php echo  $row ['id']; ?></td>
-                  <td><a href="user.php?id=<?php echo $row["id"]; ?>"><?php echo $row["Fname"]; ?></a></td>
-                  <td><?php echo  $row ['Lname']; ?></td>
+                  <td><a href="user.php?id=<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></a></td>
+                  <td><?php echo  $row ['eventtype']; ?></td>
                   <td><?php echo  $row ['Pnumber']; ?></td>
-                  <td><?php echo  $row ['Email']; ?></td>
+                  <td><?php echo  $row ['Date']; ?></td>
                   <td><a href="delete.php?Del=<?php echo $row["id"]; ?>">Delete</a></td>
                 </tr>
                 <?php $count++; } ?>
