@@ -3,11 +3,12 @@ include('connect.php');
 if(isset($_GET['Del']))
 {
     $id = $_GET['Del'];
-    $query = " delete from userinfo where id = '".$id."'";
+    $query = " delete from eevent where id = '".$id."'";
     $result = mysqli_query($con,$query);
     if($result)
-    {
-        header("location:index.php");
+    { 
+        
+        header("location:list.php");
     }
     else
     {
@@ -16,6 +17,6 @@ if(isset($_GET['Del']))
 }
 else
 {
-    header("location:index.php");
+    header("location:list.php");
 }
 ?>

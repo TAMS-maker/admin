@@ -10,49 +10,63 @@ include("connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-
-<!--for navbar-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- for pagination-->
+   <!-- for pagination-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300&display=swap');
+
+html, body{
+    margin: 0;
+    padding: 0;
+    
+  }
+.navbar-brand{
+  font: 3em 'Cormorant Garamond';
+}
+
+@media (max-width: 576px) { 
+  .navbar-brand{
+    font-size: calc(1.525rem + 3.3vw);
+}
+
+}
+
+
+</style>
+
+
 </head>
 
 <body>
+  <div class="container-fluid m-0 p-0">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand fst-italic" href="#">E-event</a>
  
 
       <div class="navbar-nav ml-auto">
          Hi,
       <?php session_start();
-       echo $_SESSION['User'];?>! &nbsp;
+       echo $_SESSION['username'];?>! &nbsp;
      <a class ="right" href="logout.php"  id="logout">Log-out</a>
     </div>
   </div>
 </nav>
-
+</div>
 <div class="container mt-5">
     
             <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th class="th-sm">id
-
-                  </th>
                   <th class="th-sm">NAME
 
                   </th>
                   <th class="th-sm">Event Type
-
-                  </th>
-                  <th class="th-sm">Pnumber
 
                   </th>
                   <th class="th-sm">Date Request
@@ -70,12 +84,10 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
             $result = mysqli_query($con,$sel_query);
             while($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
-                  <td><?php echo  $row ['id']; ?></td>
-                  <td><a href="user.php?id=<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></a></td>
-                  <td><?php echo  $row ['eventtype']; ?></td>
-                  <td><?php echo  $row ['Pnumber']; ?></td>
-                  <td><?php echo  $row ['Date']; ?></td>
-                  <td><a href="delete.php?Del=<?php echo $row["id"]; ?>">Delete</a></td>
+                  <td><a href="details.php?id=<?php echo $row["id"]; ?>"><?php echo $row["name"]; ?></a></td>
+                  <td><?php echo  $row ['event']; ?></td>             
+                  <td><?php echo  $row ['date']; ?></td>
+                  <td><a href="delete.php?Del=<?php echo $row["id"]; ?>" onclick="return confirm('Are you sure you want to delete this item ?')">Delete</a></td>
                 </tr>
                 <?php $count++; } ?>
               </tbody>
@@ -93,6 +105,14 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
   $('.dataTables_length').addClass('bs-select');
 });
 </script>
+
+<script>  
+function confirmDelete(delUrl) {  
+ if (confirm("Are you sure you want to delete this item")) {  
+     document.location = delUrl;  
+ }  
+}  
+</script> 
 
 <!--for navbar-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
