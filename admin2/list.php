@@ -23,6 +23,7 @@ include("connect.php");
 html, body{
     margin: 0;
     padding: 0;
+    height: 100vh;
     
   }
 
@@ -53,7 +54,7 @@ table a{
 <body>
   <div class="container-fluid m-0 p-0">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container-fluid m-0 p-0">
     <a class="navbar-brand fst-italic" href="#">     <?php 
                               if (file_exists ('./assets/b-logo.png')) {
                                   echo '<img src="./assets/b-logo.png" title="contrast" class="contrast">'; 
@@ -77,7 +78,7 @@ table a{
 
 <div class="container mt-5">
     
-            <table id="dtBasicExample" class="table table-dark table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <table id="dtBasicExample" class="table table-dark table-striped table-bordered table-sm m-0 p-0" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th class="th-sm">NAME
