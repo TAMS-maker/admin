@@ -18,24 +18,32 @@ include("connect.php");
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 html, body{
     margin: 0;
     padding: 0;
     
   }
-.navbar-brand{
-  font: 3em 'Cormorant Garamond';
+
+  *{
+    font-family: 'Montserrat', sans-serif;
+  }
+
+
+.navbar-brand img{
+     height: 80px; width: 150px;
+    }
+
+nav a{
+  text-decoration:none;
+  color: #454545;
 }
 
-@media (max-width: 576px) { 
-  .navbar-brand{
-    font-size: calc(1.525rem + 3.3vw);
+table a{
+  text-decoration:none;
+  color:white;
 }
-
-}
-
 
 </style>
 
@@ -46,7 +54,15 @@ html, body{
   <div class="container-fluid m-0 p-0">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand fst-italic" href="#">E-event</a>
+    <a class="navbar-brand fst-italic" href="#">     <?php 
+                              if (file_exists ('./assets/b-logo.png')) {
+                                  echo '<img src="./assets/b-logo.png" title="contrast" class="contrast">'; 
+                              } 
+                                  else 
+                              { 
+                                  echo ''; 
+                              }
+                          ?></a>
  
 
       <div class="navbar-nav ml-auto">
@@ -58,9 +74,10 @@ html, body{
   </div>
 </nav>
 </div>
+
 <div class="container mt-5">
     
-            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+            <table id="dtBasicExample" class="table table-dark table-striped table-bordered table-sm" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th class="th-sm">NAME
